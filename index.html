@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="loginPage">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+    </div>
+
+    <div id="dashboard" class="hidden">
+      <button id="logoutBtn" onclick="logout()">Logout</button>
+      <h2>Task Manager</h2>
+
+      <input
+        type="text"
+        id="search"
+        placeholder="Search tasks..."
+        onkeyup="searchTasks()"
+      />
+      <select id="filter" onchange="filterTasks()">
+        <option value="all">All</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <select id="sort" onchange="sortTasks()">
+        <option value="date">Sort by Date</option>
+        <option value="priority">Sort by Priority</option>
+      </select>
+
+      <ul id="taskList"></ul>
+
+      <button onclick="prevPage()">Prev</button>
+      <span id="pageNumber">1</span>
+      <button onclick="nextPage()">Next</button>
+
+      <button onclick="openModal()">Add Task</button>
+    </div>
+
+    <div id="taskModal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Add/Edit Task</h2>
+        <input type="text" id="taskName" placeholder="Task Name" />
+        <input type="date" id="taskDate" />
+        <select id="taskPriority">
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+        <button onclick="saveTask()">Save</button>
+        <button onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
